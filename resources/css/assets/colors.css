@@ -1,0 +1,82 @@
+/* 1Export Colors */
+:root {
+    --light-green: #2da86d !important;
+    --dark-green: #32453F !important;
+    --black: #333333 !important;
+    --gray-green: #707D79 !important;
+    --gray: #d3d3d3 !important;
+    --lighter-green: #f9fcf8 !important;
+    --dark-gray: #A5A5A5 !important;
+    --light-blue: #066ae9 !important;
+    --yellow-green: #eeff41 !important;
+}
+
+/* Background Colors */
+.light-green-bg {
+    background-color: var(--light-green);
+}
+.dark-green-bg {
+    background-color: var(--dark-green);
+}
+.black-bg {
+    background-color: var(--black);
+}
+.white-bg {
+    background-color: var(--gray-green);
+}
+.lighter-green-bg {
+    background-color: var(--lighter-green);
+}
+.light-blue-bg {
+    background-color: var(--light-blue) !important;
+}
+
+/* Text Colors */
+.black-text,
+.black-hover,
+.black-hover:hover {
+    color: var(--black);
+}
+.light-green-text,
+.light-green-hover, 
+.light-green-hover:hover {
+    color: var(--light-green);
+}
+.dark-green-text,
+.dark-green-hover, 
+.dark-green-hover:hover {
+    color: var(--dark-green);
+}
+.yellow-green-text {
+    color: var(--yellow-green);
+}
+
+/* Border Colors */
+.gray-border {
+    border: 2px solid var(--gray);
+}
+.light-green-border,
+.light-green-hover-border:hover {
+    border: 2px solid var(--light-green);
+}
+.white-border {
+    border: 1px solid var(--gray-green);
+}
+
+/* Filtering Colors */
+.filter-white {
+    filter: brightness(0) invert(1);
+  }
+  
+.filter-invert {
+    filter: invert(1);
+}
+
+/* Opacity */
+.opacity-100 {
+    opacity: 100%;
+}
+
+.opacity-50 {
+    opacity: 50%;
+}
