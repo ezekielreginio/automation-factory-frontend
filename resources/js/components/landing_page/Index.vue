@@ -46,9 +46,18 @@
         },
         methods: {
             login() {
+                let self = this
                 UserService.postLogin(this.formData)
                 .then(res => {
                     let admin = UserService.checkUserAccess(res.data)
+
+                    if (admin) {
+                        location.replace('/dashboard')
+                    } else {
+                        // this.isInvalid = true
+                        // this.isLoading = false
+                        // this.errorMessage = "Account not allowed in this platform"
+                    }
                 })
             }
         },

@@ -19491,8 +19491,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     login: function login() {
+      var self = this;
       _services_UserService_js__WEBPACK_IMPORTED_MODULE_0__["default"].postLogin(this.formData).then(function (res) {
         var admin = _services_UserService_js__WEBPACK_IMPORTED_MODULE_0__["default"].checkUserAccess(res.data);
+        if (admin) {
+          location.replace('/dashboard');
+        } else {
+          // this.isInvalid = true
+          // this.isLoading = false
+          // this.errorMessage = "Account not allowed in this platform"
+        }
       });
     }
   }

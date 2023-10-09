@@ -21,7 +21,7 @@ export default {
               'contact_number': data.user.contact_number,
               'name': data.user.name
           }
-          
+
           CookieService.setCookie('sip_ut', data.token)
           CookieService.setCookie('sip_ud', JSON.stringify(user))
   
@@ -29,5 +29,5 @@ export default {
         }
   
         return false
-      }
+    }
 }
