@@ -9,7 +9,7 @@ RUN apk add --update npm
 RUN npm install
 
 RUN npm run production
-
+CMD php artisan config:cache
 CMD php artisan serve --host=0.0.0.0 --port=80
 EXPOSE 80
 

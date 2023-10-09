@@ -3,7 +3,7 @@ import * as CookieService from './CookieService.js'
 
 export default {
     async postLogin(data) {
-        axios.defaults.baseURL = `http://localhost:8000`
+        axios.defaults.baseURL = window.baseUrl
         return await axios.post(`/api/auth/login`, data, {
             headers: {
               'Content-Type': 'application/json'
@@ -21,6 +21,7 @@ export default {
               'contact_number': data.user.contact_number,
               'name': data.user.name
           }
+          
           CookieService.setCookie('sip_ut', data.token)
           CookieService.setCookie('sip_ud', JSON.stringify(user))
   

@@ -33,7 +33,7 @@
 </template>
 
 <script>
-    // import UserService from '../../services/UserService.js';
+    import UserService from '../../services/UserService.js';
 
     export default {
         data() {
@@ -44,14 +44,14 @@
                 }
             }
         },
-        // methods: {
-        //     login() {
-        //         UserService.postLogin(this.formData)
-        //         .then(res => {
-        //             let admin = UserService.checkUserAccess(res.data)
-        //         })
-        //     }
-        // },
+        methods: {
+            login() {
+                UserService.postLogin(this.formData)
+                .then(res => {
+                    let admin = UserService.checkUserAccess(res.data)
+                })
+            }
+        },
     }
 </script>
 
