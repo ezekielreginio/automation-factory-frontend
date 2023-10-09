@@ -4,8 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cookie;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class IsPermittedMiddleware
 {

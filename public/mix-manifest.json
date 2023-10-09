@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/navbar/main_navbar.min.js": "/js/navbar/main_navbar.min.js",
     "/css/landing_page/index.min.css": "/css/landing_page/index.min.css"
 }

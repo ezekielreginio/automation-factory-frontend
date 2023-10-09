@@ -1,5 +1,5 @@
 import axios from 'axios'
-import * as CookieService from './CookieService.js'
+import { setCookie } from './CookieService.js'
 
 export default {
     async postLogin(data) {
@@ -22,12 +22,20 @@ export default {
               'name': data.user.name
           }
 
-          CookieService.setCookie('sip_ut', data.token)
-          CookieService.setCookie('sip_ud', JSON.stringify(user))
+          setCookie('sip_ut', data.token)
+          setCookie('sip_ud', JSON.stringify(user))
   
           return true
         }
   
         return false
+    },
+    logout(hasRedirect = true) {
+      setCookie('sip_ut', '', -1)
+      setCookie('sip_ud', '', -1)
+
+      if (hasRedirect) {
+        window.location = '/'
+      }
     }
 }
