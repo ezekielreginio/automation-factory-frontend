@@ -11,20 +11,23 @@ const mix = require('laravel-mix');
  |
  */
 
+//Component Scriprs
 mix.js('resources/js/app.js', 'public/js')
     .vue()
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
 
+mix.js([
+    'resources/js/components/test_case/index.js',
+], 'public/js/components/test_case.min.js')
  /* JavaScript Mixins */
 mix.scripts([
     'resources/js/scripts/MainNavbar.js',
 ], 'public/js/navbar/main_navbar.min.js')
+
+
 
 /* CSS Mixins */
 mix.styles([
     'resources/css/assets/colors.css',
     'resources/css/assets/typography.css',
     'resources/css/assets/main.css'
-], 'public/css/landing_page/index.min.css');
+], 'public/css/landing_page/index.min.css')

@@ -21,7 +21,9 @@
     <body class="antialiased">
         <div id="app">
             @include('layouts.navbars.main')
-            @yield('content')
+            <div class="container-fluid mt-3">
+                @yield('content')
+            </div>
         </div>
         
     </body>
