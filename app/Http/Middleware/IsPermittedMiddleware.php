@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 
 class IsPermittedMiddleware
@@ -29,7 +30,7 @@ class IsPermittedMiddleware
             ])->get(config('api.baseUrl') . "/api/admin/auth/me");
 
             if ($response->status() !== 200) {
-                return redirect('/');
+                $this->forceLogout();
             }
 
             $responseData = $response->json()['user'];
@@ -42,7 +43,18 @@ class IsPermittedMiddleware
             
             abort(403, "Sorry, your account has not yet been verified. Kindly check your email and complete your registration.");
         }
+        return $this->forceLogout();
+    }
 
+    /**
+     * Force to logout user with cookie
+     *
+     * @param  string $message
+     * @return void
+     */
+    private function forceLogout(string $message = "Kindly login your account to access this page.") 
+    {
+        Cookie::queue(Cookie::forget('sip_ut'));
         return redirect('/');
     }
 }

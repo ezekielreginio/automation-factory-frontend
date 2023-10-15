@@ -20,25 +20,8 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        if ($request->hasCookie('sip_ut')) {
-            $response = Http::withHeaders([
-                'Authorization' => "Bearer " . $request->cookie('sip_ut'),
-                'Accept'    => 'application/json'
-            ])->post(config('api.baseUrl') . "/api/shipit/auth/me");
-
-            if ($response->status() !== 200) {
-                return $next($request);
-            }
-
-            $responseData = $response->json();
-
-            $isPermmited = $responseData['permitted'] == 1;
-
-            if ($isPermmited) {
-                return redirect('/dashboard');
-            }
-            
-            abort(403, "Sorry, your account has not yet been verified. Kindly check your email and complete your registration.");
+        if ($request->hasCookie('sip_ut') && !empty($request->cookie('sip_ut'))) {
+            return redirect('/dashboard');
         }
 
         return $next($request);
