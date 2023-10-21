@@ -28,11 +28,11 @@ class IsPermittedMiddleware
                 'Authorization' => "Bearer " . $request->cookie('sip_ut'),
                 'Accept'    => 'application/json'
             ])->get(config('api.baseUrl') . "/api/admin/auth/me");
-
+            
             if ($response->status() !== 200) {
-                $this->forceLogout();
+                return $this->forceLogout();
             }
-
+            
             $responseData = $response->json()['user'];
 
             $isPermmited = $responseData['permitted'] == 1;

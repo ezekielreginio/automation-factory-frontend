@@ -54,52 +54,37 @@
                 </div>
                 <h2 class="font-weight-bold font-size-16">List of Actions:</h2>
                 <div class="actions-container mb-2">
-                    <component v-for="action in actions" :is="buildActionComponent(action)"></component>
+                    <component v-for="action in actions" :is="buildActionComponent(action)" class="px-4"></component>
                 </div>
-                <div class="d-flex justify-content-center pl-2 pr-4 w-100"><button type="submit" class="btn btn-block btn-primary m-0 mr-3">Add Action</button></div>
+                <div class="d-flex justify-content-center pl-2 pr-4 w-100"><button type="button" class="btn btn-block btn-primary m-0 mr-3">Add Action</button></div>
             </div>
-            <div class="col-6 dark-green-bg">
-                <iframe src="http://raftpiea.tech:8080/reports/ExtentReports.html" title="Iframe Example" class="w-100 h-100"></iframe>
+            <div class="col-6 dark-green-bg d-flex justify-content-center align-items-center">
+                <TestActionFormComponent/>
+                <!-- <iframe src="http://raftpiea.tech:8080/reports/ExtentReports.html" title="Iframe Example" class="w-100 h-100"></iframe> -->
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import TestActionBuilder from './components/TestActionBuilder.js';
-    import TestActionDirector from './director/TestActionDirector.js';
+    import TestActionBuilder from '../builders/TestActionBuilder.js';
+    import TestActionDirector from '../directors/TestActionDirector.js';
+    import TestActionService from '../services/TestActionService.js';
+    import TestActionFormComponent from './action_form/TestActionFormComponent.vue';
+    import { mapGetters } from 'vuex'
 
     export default {
-        data() {
-            return {
-                actions: [
-                    {
-                        "type": "url",
-                        "value": "/login",
-                        "take_screenshot": true
-                    },
-                    {
-                        "type": "button",
-                        "identifier_type": "aria-label",
-                        "key": "Accept all cookies",
-                        "wait_time": 3,
-                        "take_screenshot": true
-                    },
-                ]
-            }
-        }, 
+        components: {
+            TestActionFormComponent
+        },
+        computed: {
+            ...mapGetters({
+                actions: 'testActions/getActions'
+            })
+        },
         methods: {
             buildActionComponent(action) {
-                let builder = new TestActionBuilder(action)
-                let director = new TestActionDirector(builder)
-                switch(action.type) {
-                    case 'button': 
-                        return director.makeButtonAction();
-                    case 'url':
-                        return director.makeUrlAction();
-                    default:
-                        return director.makeUrlAction();
-                }
+                return TestActionService.buildActionComponent(action)
             }
         }
     }
@@ -108,6 +93,6 @@
 <style scoped>
     .actions-container {
         max-height: 500px;
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 </style>

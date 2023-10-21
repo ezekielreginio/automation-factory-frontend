@@ -8,7 +8,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
+        <link  href="{{ asset('plugins/fontawesome/css/all.min.css') }}" rel="stylesheet">
+        
         <!-- Styles -->
         <link type="text/css" rel="stylesheet" href="https://cdn.1export.com/assets/bootstrap-4.6.0/css/bootstrap.min.css" async />
         <link rel="stylesheet" type="text/css" href="{{ asset('css/landing_page/index.min.css') }}" rel="stylesheet" type="text/css">
