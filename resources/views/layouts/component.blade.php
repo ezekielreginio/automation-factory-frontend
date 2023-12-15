@@ -28,7 +28,7 @@
         </div>
         
     </body>
+    @include('layouts.scripts.config')
     <script src="{{ asset('js/navbar/main_navbar.min.js') }}" defer></script>
-
     @yield('scripts')
 </html>

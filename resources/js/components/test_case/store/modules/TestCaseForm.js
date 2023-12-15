@@ -42,6 +42,12 @@ export const mutations = {
     },
     SET_ACTIONS_LIST(state, actionsList) {
         state.actionsList = actionsList
+    },
+    PUSH_ACTION(state, action) {
+        state.actions.push(action)
+    },
+    SAVE_ACTION(state, {action, index}) {
+        state.actions[index] = action
     }
 }
 
@@ -54,6 +60,15 @@ export const actions = {
     },
     resetActions({ commit }) {
         commit("SET_ACTIONS", [])
+    },
+    pushAction({ commit }, action) {
+        commit('PUSH_ACTION', action)
+    },
+    saveAction({commit}, {action, index}) {
+        commit("SAVE_ACTION", {
+            action: action, 
+            index: index
+        })
     },
     deselectActions({ commit, state }) {
         const deselectList = state.actionsList.map(obj => {
@@ -72,5 +87,8 @@ export const getters = {
         return state.actionsList.filter(action => {
             return action.isSelected
         })
+    },
+    getActions: state => {
+        return state.actions
     }
 }

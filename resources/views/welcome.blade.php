@@ -19,9 +19,6 @@
         </div>
 
         <script src="{{ mix('js/app.js') }}"></script>
-        <script type="text/javascript">
-            window.apiBaseUrl = "{{ config('api.apiBaseUrl') }}";
-            window.baseUrl = "{{ config('api.baseUrl') }}";
-        </script>
+        @include('layouts.scripts.config')
     </body>
 </html>

@@ -1,14 +1,9 @@
-import axios from 'axios'
 import { setCookie } from './CookieService.js'
+import { CORE_API } from './ApiService.js'
 
 export default {
-    async postLogin(data) {
-        axios.defaults.baseURL = window.baseUrl
-        return await axios.post(`/api/auth/login`, data, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
+    postLogin(data) {
+        return CORE_API().post('/api/auth/login', data)
     },
     checkUserAccess(data) {
         const ADMIN_ACCESS_LEVEL = 3

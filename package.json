@@ -17,8 +17,10 @@
         "vue-loader": "^17.3.0"
     },
     "dependencies": {
+        "@stomp/stompjs": "^7.0.0",
         "mitt": "^3.0.1",
         "vue": "^3.2.36",
+        "vuedraggable": "^4.1.0",
         "vuex": "^4.0.2"
     }
 }

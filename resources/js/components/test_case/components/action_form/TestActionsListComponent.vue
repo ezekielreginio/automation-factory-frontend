@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="font-size-28">Select Action/s</h1>
+        <h1 class="font-size-28"><i @click="back('automation-quote-component')" class="fas fa-arrow-left pr-2 cursor-pointer"></i>Select Action/s</h1>
         <div class="action-form-container w-100">
             <div v-for="(action, key) in actionsList" @click="selectAction(action, key)" 
                 class="p-3 green-border-left my-2 row mx-2"
@@ -37,7 +37,8 @@
         methods: {
             ...mapActions({
                 showActionDetailsComponent: 'testCaseForm/setCurrentComponent',
-                setActions: 'testCaseForm/setActions'
+                setActions: 'testCaseForm/setActions',
+                back: 'testActions/setRightComponent',
             }),
             selectAction(action, key) {
                 this.actionsList[key].isSelected = !this.actionsList[key].isSelected
